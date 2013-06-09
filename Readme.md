@@ -1,25 +1,21 @@
 
-# canonical
+# list
 
-  Component: returns the canonical URL for the page.
+  An abstraction for managing a list of views. Basically, List is to Collection as View is to Model.
 
 ## Installation
 
-    $ component install segmentio/canonical
+    $ component install segmentio/list
 
 ## Example
 
-```html
-<html>
-<head>
-  <link rel="canonical" href="http://exampe.com" />
-</head>
-</html>
-```
-
 ```js
-var canonical = require('canonical');
-canonical(); // http://example.com
+var List = require('list')
+  , ItemView = require('./item-view');
+
+// Later on...
+var list = new List(ItemView);
+collection.each(list.add.bind(this));
 ```
 
 ## License
