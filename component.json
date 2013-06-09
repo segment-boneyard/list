@@ -5,7 +5,7 @@
   "repo": "segmentio/list",
   "description": "An abstraction for managing a list of views. Basically, List is to Collection as View is to Model.",
   "keywords": ["list", "collection", "view", "model", "menu", "items"],
-  "dependecies": {
+  "dependencies": {
     "segmentio/dom": "*",
     "component/each": "*",
     "component/emitter": "*"
