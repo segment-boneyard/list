@@ -1,0 +1,20 @@
+{
+  "name": "canonical",
+  "version": "0.0.1",
+  "license": "MIT",
+  "repo": "segmentio/canonical",
+  "description": "An abstraction for managing a list of views. Basically, List is to Collection as View is to Model.",
+  "keywords": ["list", "collection", "view", "model", "menu", "items"],
+  "dependecies": {
+    "segmentio/dom": "*",
+    "component/emitter": "*",
+    "component/enumerable": "*",
+    "component/find": "*"
+  },
+  "development": {
+    "component/assert": "*"
+  },
+  "scripts": [
+    "index.js"
+  ]
+}
