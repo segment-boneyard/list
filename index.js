@@ -1,4 +1,3 @@
-
 // TODO: i dont think we really need all of `dom`
 
 var dom = require('dom')
@@ -50,7 +49,7 @@ Emitter(List.prototype);
 
 List.prototype.add = function (model) {
   var id = model.primary();
-  var el = new this.View(model).el;
+  var el = new this.View(model, this).el;
   this.items[id] = el;
   this.list.els.push(el);
   this.el.appendChild(el);
