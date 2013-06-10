@@ -16,7 +16,8 @@ module.exports = List;
 
 function List (View) {
   this.View = View;
-  this.items = {};
+  this.models = {};
+  this.elements = {};
   this.list = dom([]);
   this.el = document.createElement('ul');
 }
@@ -50,7 +51,8 @@ Emitter(List.prototype);
 List.prototype.add = function (model) {
   var id = model.primary();
   var el = new this.View(model, this).el;
-  this.items[id] = el;
+  this.models[id] = model;
+  this.elements[id] = el;
   this.list.els.push(el);
   this.el.appendChild(el);
   this.emit('add', el);
@@ -65,12 +67,14 @@ List.prototype.add = function (model) {
  */
 
 List.prototype.remove = function (id) {
-  var el = this.items[id];
-  delete this.items[id];
-  if (!el) return;
+  var model = this.models[id];
+  var el = this.elements[id];
+  delete this.models[id];
+  delete this.elements[id];
+  if (!model || !el) return;
   this.list = this.list.reject(function (item) { el === item.get(0); });
   this.el.removeChild(el);
-  this.emit('remove', el);
+  this.emit('remove', model, el);
   return this;
 };
 
@@ -92,6 +96,6 @@ List.prototype.filter = function (fn) {
  */
 
 List.prototype.empty = function () {
-  each(this.items, this.remove.bind(this));
+  each(this.models, this.remove.bind(this));
   return this;
 };
