@@ -96,3 +96,27 @@ List.prototype.empty = function () {
   each(this.items, this.remove.bind(this));
   return this;
 };
+
+
+/**
+ * Add a class to the list.
+ *
+ * @param {String} name
+ */
+
+List.prototype.addClass = function (name) {
+  dom(this.el).addClass(name);
+  return this;
+};
+
+
+/**
+ * Remove a class from the list.
+ *
+ * @param {String} name
+ */
+
+List.prototype.removeClass = function (name) {
+  dom(this.el).removeClass(name);
+  return this;
+};
