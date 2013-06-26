@@ -1,6 +1,6 @@
-// TODO: i dont think we really need all of `dom`
 
-var dom = require('dom')
+var bind = require('bind')
+  , dom = require('dom')
   , each = require('each')
   , Emitter = require('emitter')
   , sort = require('sort');
@@ -19,6 +19,7 @@ function List (View) {
   this.View = View;
   this.el = document.createElement('ul');
   this.reset();
+  this.proxy = bind(this, this.proxy);
 }
 
 
@@ -43,11 +44,12 @@ Emitter(List.prototype);
 
 /**
  * Reset the list to it's default state.
+ *
+ * @return {List}
  */
 
 List.prototype.reset = function () {
-  this.models = {};
-  this.els = {};
+  this.items = {};
   this.list = dom([]);
   return this;
 };
@@ -57,16 +59,23 @@ List.prototype.reset = function () {
  * Add an item to the list.
  *
  * @param {Model} model
+ * @return {List}
  */
 
 List.prototype.add = function (model) {
-  var id = model.primary();
-  var el = new this.View(model, this).el;
-  this.models[id] = model;
-  this.els[id] = el;
+  var view = new this.View(model);
+  view.on('*', this.proxy);
+  var el = view.el;
+
+  this.items[model.primary()] = {
+    el    : el,
+    model : model,
+    view  : view
+  };
+
   this.list.els.push(el);
   this.el.appendChild(el);
-  this.emit('add', model, el);
+  this.emit('add', el, model, view);
   return this;
 };
 
@@ -75,17 +84,18 @@ List.prototype.add = function (model) {
  * Remove an item from the list.
  *
  * @param {String} id
+ * @return {List}
  */
 
 List.prototype.remove = function (id) {
-  var model = this.models[id];
-  var el = this.els[id];
-  delete this.models[id];
-  delete this.els[id];
-  if (!model || !el) return;
-  this.list = this.list.reject(function (item) { el === item.get(0); });
+  var item = this.items[id];
+  var el = item.el;
+  delete this.items[id];
+  if (!el) return;
+
+  this.list = this.list.reject(function (_) { el === _.get(0); });
   this.el.removeChild(el);
-  this.emit('remove', model, el);
+  this.emit('remove', el, item.model, item.view);
   return this;
 };
 
@@ -93,7 +103,8 @@ List.prototype.remove = function (id) {
 /**
  * Filter the list's elements by hiding ones that don't match.
  *
- * @param {Function} fn  Filtering function.
+ * @param {Function} fn
+ * @return {List}
  */
 
 List.prototype.filter = function (fn) {
@@ -105,6 +116,9 @@ List.prototype.filter = function (fn) {
 
 /**
  * Sort the list's elements by an iterator `fn`.
+ *
+ * @param {Function} fn
+ * @return {List}
  */
 
 List.prototype.sort = function (fn) {
@@ -115,17 +129,18 @@ List.prototype.sort = function (fn) {
 
 /**
  * Empty the list.
+ *
+ * @return {List}
  */
 
 List.prototype.empty = function () {
   var self = this;
-  var models = this.models;
-  var els = this.els;
+  var items = this.items;
   this.reset();
-  each(models, function (id, model) {
-    var el = els[id];
-    dom(el).remove();
-    self.emit('remove', model, els[id]);
+  each(items, function (id, item) {
+    dom(item.el).remove();
+    item.view.off('*');
+    self.emit('remove', item.el, item.model, item.view);
   });
   return this;
 };
@@ -135,6 +150,7 @@ List.prototype.empty = function () {
  * Add a class to the list.
  *
  * @param {String} name
+ * @return {List}
  */
 
 List.prototype.addClass = function (name) {
@@ -147,9 +163,26 @@ List.prototype.addClass = function (name) {
  * Remove a class from the list.
  *
  * @param {String} name
+ * @return {List}
  */
 
 List.prototype.removeClass = function (name) {
   dom(this.el).removeClass(name);
+  return this;
+};
+
+
+/**
+ * Proxy all of a view's events up one level.
+ *
+ * @param {String} event
+ * @param {Mixed} args...
+ * @return {List}
+ */
+
+List.prototype.proxy = function (event) {
+  var args = Array.prototype.slice.call(arguments, 1);
+  args.unshift('item ' + event);
+  this.emit.apply(this, args);
   return this;
 };
