@@ -19,7 +19,6 @@ function List (View) {
   this.View = View;
   this.el = document.createElement('ul');
   this.reset();
-  this.proxy = bind(this, this.proxy);
 }
 
 
@@ -58,15 +57,24 @@ List.prototype.reset = function () {
 /**
  * Add an item to the list.
  *
- * @param {Model} model
+ * @param {Object} model
  * @return {List}
  */
 
 List.prototype.add = function (model) {
-  var view = new this.View(model);
-  view.on('*', this.proxy);
-  var el = view.el;
+  var self = this;
 
+  var view = new this.View(model);
+  if (view.on) {
+    view.on('*', function () {
+      var args = Array.prototype.slice.call(arguments);
+      args[0] = 'item ' + args[0];
+      self.emit.apply(self, args);
+    });
+  }
+
+  var el = view.el;
+  var id = model.id || model.primary();
   this.items[model.primary()] = {
     el    : el,
     model : model,
@@ -168,21 +176,5 @@ List.prototype.addClass = function (name) {
 
 List.prototype.removeClass = function (name) {
   dom(this.el).removeClass(name);
-  return this;
-};
-
-
-/**
- * Proxy all of a view's events up one level.
- *
- * @param {String} event
- * @param {Mixed} args...
- * @return {List}
- */
-
-List.prototype.proxy = function (event) {
-  var args = Array.prototype.slice.call(arguments, 1);
-  args.unshift('item ' + event);
-  this.emit.apply(this, args);
   return this;
 };
