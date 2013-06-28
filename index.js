@@ -75,7 +75,7 @@ List.prototype.add = function (model) {
 
   var el = view.el;
   var id = model.id || model.primary();
-  this.items[model.primary()] = {
+  this.items[id] = {
     el    : el,
     model : model,
     view  : view
