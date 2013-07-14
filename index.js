@@ -3,6 +3,7 @@ var bind = require('bind')
   , dom = require('dom')
   , each = require('each')
   , Emitter = require('emitter')
+  , get = require('get')
   , sort = require('sort');
 
 
@@ -74,7 +75,7 @@ List.prototype.add = function (model) {
   }
 
   var el = view.el;
-  var id = model.id || model.primary();
+  var id = get(model, 'primary') || get(model, 'id');
   this.items[id] = {
     el    : el,
     model : model,

@@ -10,7 +10,8 @@
     "segmentio/dom": "*",
     "component/each": "*",
     "segmentio/emitter": "*",
-    "component/sort": "*"
+    "component/sort": "*",
+    "ianstormtaylor/get"
   },
   "development": {
     "component/assert": "*"
