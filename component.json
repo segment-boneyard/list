@@ -14,7 +14,8 @@
     "ianstormtaylor/get": "*"
   },
   "development": {
-    "component/assert": "*"
+    "component/assert": "*",
+    "component/type": "*"
   },
   "scripts": [
     "index.js"
