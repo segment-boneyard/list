@@ -1,6 +1,6 @@
 {
   "name": "list",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "license": "MIT",
   "repo": "segmentio/list",
   "description": "An abstraction for managing a list of views. Basically, List is to Collection as View is to Model.",
@@ -15,9 +15,13 @@
   },
   "development": {
     "component/assert": "*",
-    "component/type": "*"
+    "component/type": "*",
+    "segmentio/view": "*"
   },
   "scripts": [
-    "index.js"
-  ]
+    "lib/index.js",
+    "lib/protos.js",
+    "lib/statics.js"
+  ],
+  "main": "lib/index.js"
 }

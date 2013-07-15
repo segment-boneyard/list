@@ -10,12 +10,14 @@
 ## Example
 
 ```js
-var List = require('list')
+var list = require('list')
   , ItemView = require('./item-view');
 
 // Later on...
-var list = new List(ItemView);
-collection.each(list.add.bind(this));
+var List = list(ItemView);
+
+var view = new List()
+collection.each(view.add.bind(view));
 ```
 
 ## License
