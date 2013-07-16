@@ -8,6 +8,15 @@ describe('list', function () {
     var List = list(View);
     assert('function' === typeof List);
   });
+
+  it('should emit construct', function (done) {
+    var View = view('<div></div>');
+    var List = list(View);
+    List.on('construct', function (list) {
+      done();
+    });
+    new List();
+  });
 });
 
 describe('List', function () {
