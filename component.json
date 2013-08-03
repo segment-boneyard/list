@@ -7,7 +7,7 @@
   "keywords": ["list", "collection", "view", "model", "menu", "items"],
   "dependencies": {
     "component/bind": "*",
-    "segmentio/dom": "*",
+    "component/dom": "*",
     "component/each": "*",
     "segmentio/emitter": "*",
     "component/sort": "*",
