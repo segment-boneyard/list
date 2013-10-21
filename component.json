@@ -1,6 +1,6 @@
 {
   "name": "list",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "license": "MIT",
   "repo": "segmentio/list",
   "description": "An abstraction for managing a list of views. Basically, List is to Collection as View is to Model.",

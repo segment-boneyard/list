@@ -1,3 +1,7 @@
+0.2.1 - October 20, 2013
+------------------------
+* make sure to check for emitter views
+
 0.2.0 - August 12, 2013
 -----------------------
 * changed `sort` to be called with `el, model, view`
