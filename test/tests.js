@@ -43,4 +43,22 @@ describe('List', function () {
       assert(1 === list.el.childNodes.length);
     });
   });
+
+  describe('#remove(id)', function(){
+    it('should remove an item', function(){
+      var list = new List;
+
+      list.add({ id: 'foo' });
+      list.add({ id: 'bar' });
+      list.add({ id: 'baz' });
+
+      assert(3 == list.el.childNodes.length);
+
+      list.remove('foo');
+      assert(2 == list.el.childNodes.length);
+
+      list.remove('bar');
+      assert(1 == list.el.childNodes.length);
+    })
+  })
 });

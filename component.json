@@ -14,7 +14,7 @@
   ],
   "dependencies": {
     "component/bind": "0.0.1",
-    "component/dom": "0.9.0",
+    "component/dom": "*",
     "component/each": "0.1.0",
     "segmentio/emitter": "1.0.0",
     "ianstormtaylor/get": "*",
