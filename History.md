@@ -1,3 +1,7 @@
+0.2.2 - January 6, 2013
+-----------------------
+* upgrade `dom` to `0.9.0`
+
 0.2.1 - October 20, 2013
 ------------------------
 * make sure to check for emitter views

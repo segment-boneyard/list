@@ -1,17 +1,24 @@
 {
   "name": "list",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "license": "MIT",
   "repo": "segmentio/list",
   "description": "An abstraction for managing a list of views. Basically, List is to Collection as View is to Model.",
-  "keywords": ["list", "collection", "view", "model", "menu", "items"],
+  "keywords": [
+    "list",
+    "collection",
+    "view",
+    "model",
+    "menu",
+    "items"
+  ],
   "dependencies": {
-    "component/bind": "*",
-    "component/dom": "*",
-    "component/each": "*",
-    "segmentio/emitter": "*",
-    "ianstormtaylor/get": "*",
-    "ianstormtaylor/map": "*"
+    "component/bind": "0.0.1",
+    "component/dom": "0.9.0",
+    "component/each": "0.1.0",
+    "segmentio/emitter": "1.0.0",
+    "ianstormtaylor/get": "0.0.1",
+    "ianstormtaylor/map": "0.1.0"
   },
   "development": {
     "component/assert": "*",
