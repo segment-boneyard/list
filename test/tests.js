@@ -53,12 +53,15 @@ describe('List', function () {
       list.add({ id: 'baz' });
 
       assert(3 == list.el.childNodes.length);
+      assert(3 == list.list.length);
 
       list.remove('foo');
       assert(2 == list.el.childNodes.length);
+      assert(2 == list.list.length);
 
       list.remove('bar');
       assert(1 == list.el.childNodes.length);
+      assert(1 == list.list.length);
     })
   })
 });
