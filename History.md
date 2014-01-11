@@ -1,4 +1,10 @@
 
+0.2.4 / 2014-01-10
+==================
+
+ * fix element tracking due to dom bug
+ * fix .remove() and add test
+
 0.2.3 / 2014-01-07
 ==================
 
