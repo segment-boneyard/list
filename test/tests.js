@@ -64,4 +64,13 @@ describe('List', function () {
       assert(1 == list.list.length);
     })
   })
+
+  describe('#length()', function(){
+    it('should return the list\'s length', function(){
+      var list = new List();
+      list.add({ id: 1 });
+      list.add({ id: 2 });
+      assert.equal(2, list.length());
+    });
+  });
 });
