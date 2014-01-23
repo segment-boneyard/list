@@ -15,6 +15,7 @@
   "dependencies": {
     "component/dom": "*",
     "component/each": "0.1.0",
+    "component/type": "*",
     "segmentio/emitter": "1.0.0",
     "ianstormtaylor/bind": "*",
     "ianstormtaylor/get": "*",
@@ -22,7 +23,6 @@
   },
   "development": {
     "component/assert": "*",
-    "component/type": "*",
     "segmentio/view": "*"
   },
   "scripts": [

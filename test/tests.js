@@ -25,11 +25,11 @@ describe('List', function () {
     , type = require('type')
     , view = require('view');
 
-  var View = view('<div></div>');
+  var View = view('<div id="{id}"></div>');
   var List = list(View);
 
   it('should add models on construct', function () {
-    var list = new List([{ id: 1 }, { id: 2 }]);
+    var list = new List([1, 2]);
     assert.equal(2, list.length());
   });
 
@@ -46,6 +46,13 @@ describe('List', function () {
       assert(0 === list.el.childNodes.length);
       list.add('item');
       assert(1 === list.el.childNodes.length);
+    });
+
+    it('should prepend items', function () {
+      var list = new List({ prepend: true });
+      list.add({ id: 1 });
+      list.add({ id: 2 });
+      assert.equal('2', list.el.childNodes[0].id);
     });
   });
 
@@ -73,8 +80,8 @@ describe('List', function () {
   describe('#length()', function(){
     it('should return the list\'s length', function(){
       var list = new List();
-      list.add({ id: 1 });
-      list.add({ id: 2 });
+      list.add(1);
+      list.add(2);
       assert.equal(2, list.length());
     });
   });
