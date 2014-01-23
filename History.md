@@ -1,4 +1,11 @@
 
+0.3.0 - January 23, 2013
+------------------------
+* add `length` method
+* add `prepend` option
+* allow constructor to take models
+* bind all methods
+
 0.2.4 / 2014-01-10
 ==================
 
