@@ -13,10 +13,10 @@
     "items"
   ],
   "dependencies": {
-    "component/bind": "0.0.1",
     "component/dom": "*",
     "component/each": "0.1.0",
     "segmentio/emitter": "1.0.0",
+    "ianstormtaylor/bind": "*",
     "ianstormtaylor/get": "*",
     "ianstormtaylor/map": "0.1.0"
   },
