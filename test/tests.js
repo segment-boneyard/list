@@ -28,6 +28,11 @@ describe('List', function () {
   var View = view('<div></div>');
   var List = list(View);
 
+  it('should add models on construct', function () {
+    var list = new List([{ id: 1 }, { id: 2 }]);
+    assert.equal(2, list.length());
+  });
+
   describe('#el', function () {
     it('should have an .el property', function () {
       var list = new List();
