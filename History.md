@@ -1,4 +1,8 @@
 
+1.0.0 - January 28, 2013
+------------------------
+* refactor to be purely view-based
+
 0.3.0 - January 23, 2013
 ------------------------
 * add `length` method
