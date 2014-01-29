@@ -11,8 +11,12 @@
     "model",
     "items"
   ],
-  "scripts": ["lib/index.js"],
   "main": "lib/index.js",
+  "scripts": [
+    "lib/index.js",
+    "lib/protos.js",
+    "lib/statics.js"
+  ],
   "dependencies": {
     "component/classes": "*",
     "component/each": "*",
@@ -20,6 +24,7 @@
     "component/enumerable": "*",
     "component/type": "*",
     "ianstormtaylor/bind": "*",
+    "segmentio/extend": "*",
     "segmentio/proxy-events": "*"
   },
   "development": {
