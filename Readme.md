@@ -10,15 +10,17 @@
 ## Example
 
 ```js
-var list = require('list')
-  , ItemView = require('./item-view');
+var List = require('list');
+var UserView = require('user-view');
 
-// Later on...
-var List = list(ItemView);
-
-var view = new List()
-collection.each(view.add.bind(view));
+var list = new List();
+var view = new UserView(user);
+list.add(view);
 ```
+
+## API
+
+  TODO
 
 ## License
 

@@ -1,6 +1,6 @@
 {
   "name": "list",
-  "version": "0.2.4",
+  "version": "1.0.0",
   "license": "MIT",
   "repo": "segmentio/list",
   "description": "An abstraction for managing a list of views. Basically, List is to Collection as View is to Model.",
@@ -9,26 +9,21 @@
     "collection",
     "view",
     "model",
-    "menu",
     "items"
   ],
+  "scripts": ["lib/index.js"],
+  "main": "lib/index.js",
   "dependencies": {
-    "component/dom": "*",
-    "component/each": "0.1.0",
+    "component/classes": "*",
+    "component/each": "*",
+    "component/emitter": "*",
+    "component/enumerable": "*",
     "component/type": "*",
-    "segmentio/emitter": "1.0.0",
     "ianstormtaylor/bind": "*",
-    "ianstormtaylor/get": "*",
-    "ianstormtaylor/map": "0.1.0"
+    "segmentio/proxy-events": "*"
   },
   "development": {
     "component/assert": "*",
     "segmentio/view": "*"
-  },
-  "scripts": [
-    "lib/index.js",
-    "lib/protos.js",
-    "lib/statics.js"
-  ],
-  "main": "lib/index.js"
+  }
 }
